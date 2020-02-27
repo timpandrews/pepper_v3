@@ -18,6 +18,7 @@ from django.urls import path
 from pepper import views
 
 urlpatterns = [
+    path(r'', views.home, name='home'),
     path('home/', views.home, name='home'),
     path('admin/', admin.site.urls),
 ]

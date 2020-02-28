@@ -20,5 +20,7 @@ from pepper import views
 urlpatterns = [
     path(r'', views.home, name='home'),
     path('home/', views.home, name='home'),
+    path('journal/', views.journal, name='journal'),
+    path('inventory/', views.inventory, name='inventory'),
     path('admin/', admin.site.urls),
 ]

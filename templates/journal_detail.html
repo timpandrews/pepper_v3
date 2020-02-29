@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <p>Journal</p>
+
+    <div class="journal">
+        <a href="{% url 'journal_edit' id=journal.id%}">Edit Journal</a>
+        {% if journal.journal_date %}
+            <div class="date">
+                {{ journal.journal_date }}
+            </div>
+        {% endif %}
+        <h2>{{ journal.title }}</h2>
+        <p>{{ journal.text|linebreaksbr }}</p>
+    </div>
+
+{% endblock %}

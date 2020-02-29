@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <p>Journal</p>
+
+    <a href="{% url 'journal_new' %}">Add New Journal</a>
+
+    {% for journal in journals %}
+        <div class="journal">
+            <hr>
+            <p>{{ journal.id }}</p>
+            <div class="date">
+                {{ journal.journal_date }}
+            </div>
+            <h2><a href="{% url 'journal_detail' id=journal.id %}">{{ journal.title }}</a></h2>
+            <p>{{ journal.text|linebreaksbr }}</p>
+            <a href="{% url 'journal_delete' id=journal.id %}">Delete</a>
+        </div>
+    {% endfor %}
+
+{% endblock %}

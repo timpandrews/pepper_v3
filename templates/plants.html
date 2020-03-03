@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <p>Plant Inventory</p>
+
+    <a href="{% url 'plants_new' %}">Add New Plant</a>
+
+    {% for plant in plants %}
+        <div class="plant">
+            <hr>
+            <p>{{ plant.id }}</p>
+            <h2><a href="{% url 'plants_detail' id=plant.id %}">{{ plant.title }}</a></h2>
+            <p>{{ plant.text|linebreaksbr }}</p>
+            <a href="{% url 'plants_delete' id=plant.id %}">Delete</a>
+        </div>
+    {% endfor %}
+
+{% endblock %}

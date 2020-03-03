@@ -2,15 +2,15 @@
 
 {% block content %}
     {% if action == 'new' %}
-        <h2>New Journal</h2>
+        <h2>New Plant</h2>
     {% else %}
-        <h2>Edit Journal</h2>
+        <h2>Edit Plant</h2>
     {% endif %}
-    <form method="POST" class="journal-form">{% csrf_token %}
+    <form method="POST" class="plant-form">{% csrf_token %}
         {{ form.as_p }}
         {% if action == 'new' %}
             <button type="submit" class="save btn btn-primary">Save</button>
-            <a href="/journal" class="cancel btn btn-secondary" role="button">Cancel</a>
+            <a href="/plants" class="cancel btn btn-secondary" role="button">Cancel</a>
         {% else %}
             <button type="submit" class="save btn btn-primary">Update</button>
             <a href="{{ request.path|slice:":-6" }}" class="cancel btn btn-secondary" role="button">Cancel</a>

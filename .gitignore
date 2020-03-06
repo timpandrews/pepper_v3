@@ -1,3 +1,7 @@
 # Project exclude paths
 /_venv/
 /.idea/
+/journal/migrations/
+
+__pycache__/
+ *.pyc

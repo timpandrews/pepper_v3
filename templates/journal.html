@@ -1,21 +1,24 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
-
-    <p>Journal</p>
-
-    <a href="{% url 'journal_new' %}">Add New Journal</a>
+    <div class="card">
+        <h1 class="card-title">Journal</h1>
+        <div>
+            <a href="{% url 'journal_new' %}" class="btn btn-primary btn-sm">Add New Journal</a>
+        </div>
+    </div>
 
     {% for journal in journals %}
-        <div class="journal">
-            <hr>
-            <p>{{ journal.id }}</p>
-            <div class="date">
-                {{ journal.journal_date }}
+        <div class="card journal" style="">
+            <img src="{% static "images/journal.jpeg" %}" class="card-img-top journal_img_top" alt="Journal Entry" style="height:100px; width:100px">
+            <div class="card-body">
+                <h5 class="card-title">{{ journal.title }}</h5>
+                <p>{{ journal.journal_date }} <small class="text-muted">(id={{ journal.id }})</small></p>
+                <p class="card-text">{{ journal.text|linebreaksbr }}</p>
+                <a href="{% url 'journal_detail' id=journal.id %}" class="btn btn-primary">Details</a>
+                <a href="{% url 'journal_delete' id=journal.id %}" class="btn btn-outline-primary">Delete</a>
             </div>
-            <h2><a href="{% url 'journal_detail' id=journal.id %}">{{ journal.title }}</a></h2>
-            <p>{{ journal.text|linebreaksbr }}</p>
-            <a href="{% url 'journal_delete' id=journal.id %}">Delete</a>
         </div>
     {% endfor %}
 

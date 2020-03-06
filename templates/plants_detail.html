@@ -1,14 +1,21 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
 
-    <p>Plants</p>
+    <div class="card">
+        <h1 class="card-title">Plants</h1>
+    </div>
 
-    <div class="plants">
-        <a href="{% url 'plants_edit' id=plants.id%}">Edit Plant</a>
-        <h2>{{ plants.title }}</h2>
-        <p>{{ plants.description|linebreaksbr }}</p>
-        <a href="/plants" class="cancel btn btn-secondary" role="button">Return</a>
+    <div class="card plant" style="">
+        <img src="{% static "images/plant.jpg" %}" class="card-img-top plant_img_top" alt="Plant Inventory Entry" style="height:100px; width:100px">
+        <div class="card-body">
+            <h5 class="card-title">{{ plants.title }}</h5>
+            <p><small class="text-muted">(id={{ plants.id }})</small></p>
+            <p class="card-text">{{ plants.description|linebreaksbr }}</p>
+            <a href="{% url 'plants_edit' id=plants.id%}" class="btn btn-primary">Edit Plant</a>
+            <a href="/plants" class="btn btn-outline-primary">Return</a>
+        </div>
     </div>
 
 {% endblock %}

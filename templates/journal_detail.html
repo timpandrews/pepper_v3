@@ -1,19 +1,20 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
 
-    <p>Journal</p>
-
-    <div class="journal">
-        <a href="{% url 'journal_edit' id=journal.id%}">Edit Journal</a>
-        {% if journal.journal_date %}
-            <div class="date">
-                {{ journal.journal_date }}
-            </div>
-        {% endif %}
-        <h2>{{ journal.title }}</h2>
-        <p>{{ journal.text|linebreaksbr }}</p>
-        <a href="/journal" class="cancel btn btn-secondary" role="button">Return</a>
+    <div class="card">
+        <h1 class="card-title">Journal</h1>
     </div>
 
+    <div class="card journal" style="">
+        <img src="{% static "images/journal.jpeg" %}" class="card-img-top journal_img_top" alt="Journal Entry" style="height:100px; width:100px">
+        <div class="card-body">
+            <h5 class="card-title">{{ journal.title }}</h5>
+            <p>{{ journal.journal_date }} <small class="text-muted">(id={{ journal.id }})</small></p>
+            <p class="card-text">{{ journal.text|linebreaksbr }}</p>
+            <a href="{% url 'journal_edit' id=journal.id%}" class="btn btn-primary">Edit Journal</a>
+            <a href="/journal" class="btn btn-outline-primary">Return</a>
+        </div>
+    </div>
 {% endblock %}

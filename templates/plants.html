@@ -1,18 +1,24 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
-
-    <p>Plant Inventory</p>
-
-    <a href="{% url 'plants_new' %}">Add New Plant</a>
+    <div class="card">
+        <h1 class="card-title">Plant Inventory</h1>
+        <div>
+            <a href="{% url 'plants_new' %}" class="btn btn-primary btn-sm">Add New Journal</a>
+        </div>
+    </div>
 
     {% for plant in plants %}
-        <div class="plant">
-            <hr>
-            <p>{{ plant.id }}</p>
-            <h2><a href="{% url 'plants_detail' id=plant.id %}">{{ plant.title }}</a></h2>
-            <p>{{ plant.text|linebreaksbr }}</p>
-            <a href="{% url 'plants_delete' id=plant.id %}">Delete</a>
+        <div class="card plant" style="">
+            <img src="{% static "images/plant.jpg" %}" class="card-img-top plant_img_top" alt="Plant Inventory Entry" style="height:100px; width:100px">
+            <div class="card-body">
+                <h5 class="card-title">{{ plant.title }}</h5>
+                <p><small class="text-muted">(id={{ plant.id }})</small></p>
+                <p class="card-text">{{ plant.description|linebreaksbr }}</p>
+                <a href="{% url 'plants_detail' id=plant.id %}" class="btn btn-primary">Details</a>
+                <a href="{% url 'plants_delete' id=plant.id %}" class="btn btn-outline-primary">Delete</a>
+            </div>
         </div>
     {% endfor %}
 
